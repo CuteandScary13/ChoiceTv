@@ -1,7 +1,7 @@
 /*
  * This class is used to store relevant information for 
  * WatchThis to use when choosing which episode you should
- * watch.
+ * watch. 
  * 
  */
 
@@ -13,6 +13,7 @@ public class TvEpisode {
 	int EpNum; //Episode number within the season
 	String URL; //stores the URL of the episode
 	double EpLength;
+	String Genre;
 	//LastWatched; https://www.javatpoint.com/java-get-current-date
 	
 	public TvEpisode() {
@@ -21,36 +22,44 @@ public class TvEpisode {
 		EpNum = 1;
 		URL = "URL goes here";
 		EpLength = 23;
-		
+		Genre = "Comedy";
 	}
-	public TvEpisode(String newTitle, int Season, int Episode, String newURL, double newLength) {
-		Title = newTitle;
-		SeasonNum = Season;
-		EpNum = Episode;
-		URL = newURL;
-		EpLength = newLength;
+	public TvEpisode(String newTitle, int Season, int Episode, String newURL, double newLength, String newGenre) {
+		this.Title = newTitle;
+		this.SeasonNum = Season;
+		this.EpNum = Episode;
+		this.URL = newURL;
+		this.EpLength = newLength;
+		this.Genre = newGenre;
 	}
 	
+	
+	//For testing purposes.
 	 public static void main(String[] args) {
-		 TvEpisode example = new TvEpisode("Whack",4,6,"www.com", 23.3);
-		 
-		 System.out.println(example.Title);
-		 System.out.println(example.URL);
-		 System.out.println(example.EpNum);
-		 System.out.println(example.SeasonNum);
-		 System.out.println(example.EpLength+"\n");
-		 System.out.println(example.toString()+"\n");
-		 
-		 example.setEpNum(2);
-		 example.setSeasonNum(3);
-		 example.setTitle("Yikes");
-		 example.setURL("www.example.com");		 
+		 TvEpisode example = new TvEpisode("Whack",4,6,"www.com", 23.3, "Drama");
 		 
 		 System.out.println(example.Title);
 		 System.out.println(example.URL);
 		 System.out.println(example.EpNum);
 		 System.out.println(example.SeasonNum);
 		 System.out.println(example.EpLength);
+		 System.out.println(example.Genre);
+		 System.out.println(example.toString()+"\n");
+		 
+		 example.setEpNum(2);
+		 example.setSeasonNum(3);
+		 example.setTitle("Yikes");
+		 example.setURL("www.example.com");		 
+		 example.setEpLength(22.22f);
+		 example.setGenre("Sci-fi");
+		 
+		 
+		 System.out.println(example.Title);
+		 System.out.println(example.URL);
+		 System.out.println(example.EpNum);
+		 System.out.println(example.SeasonNum);
+		 System.out.println(example.EpLength);
+		 System.out.println(example.Genre);
 		 System.out.println(example.toString());
 		 
 	 }
@@ -66,12 +75,13 @@ public class TvEpisode {
 	  * Season: Given only 2 spaces because I don't know any series that was more than 99 seasons, barely any more than 10.
 	  * Episode: Given 3 spaces because I don't know any series that has more than 999 episodes in a single season.
 	  * Length: Choosen to replicate how it is seen in most video players.
+	  * Genre: Given 15 spaces because the longest I could think of was High Fantasy, and thought I should give a little more room.
 	  * URL: URLs are highly variable in length and I don't want to cut any of it off so the URL can be usable right then and there,
 	  *      Put at the end to allow for it's variable length while minimizing it's effect on readability.
 	  */
 	 public String toString() {
-		String str1 = String.format("Title: %-20s Season: %2s Episode: %3s Lenght: %3.2f URL: %s",
-				Title, SeasonNum,EpNum, EpLength, URL);
+		String str1 = String.format("Title: %-20s Season: %2s Episode: %3s Lenght: %3.2f Genre: %-15s URL: %s",
+				Title, SeasonNum,EpNum, EpLength, Genre,URL);
 		 
 		 return str1;
 				 //"Title: "+Title+" Season "+SeasonNum+" Episode:"+EpNum+ "Ep Length:"+EpLength+" URL:"+URL+"\n";
@@ -98,4 +108,7 @@ public class TvEpisode {
 	public void setEpLength(float tempLength) {EpLength = tempLength;}
 	public double getEpLength() { return EpLength;}
 	
+	//Genre
+	public void setGenre(String tempGenre) { Genre = tempGenre;}
+	public String getGenre() {return Genre;}
 }

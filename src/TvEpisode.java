@@ -12,6 +12,7 @@ public class TvEpisode {
 	int SeasonNum;//the number of the season which this episode occurs
 	int EpNum; //Episode number within the season
 	String URL; //stores the URL of the episode
+	//LastWatched; https://www.javatpoint.com/java-get-current-date
 	
 	public TvEpisode() {
 		Title = "temp title";
